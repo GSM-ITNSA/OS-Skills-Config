@@ -9,7 +9,7 @@ Windows Active Directory를 실습 해보자.
 
 1. 하나의 Parent DC 를 가운데 둔다. 
 2. Busan DC와 Gwangju DC를 **Child DC**로 삼는다.
-3. Parent Domain은 **`korea.com`**이다. 
+3. Parent Domain은 `korea.com`이다. 
     - Parent DC IP : 192.168.0.1/24
     - Busan Child DC : 192.168.0.2/24
     - Gwangju Child DC : 192.168.0.3/24
@@ -57,18 +57,18 @@ Busan - Parent DC - Gwangju DC = vmnet0
 `CLI 방식`
 
 ```powershell
-1. IP를 넣어줄 Interface의 Alias 또는 Interface Index를 확인한다.
+# IP를 넣어줄 Interface의 Alias 또는 Interface Index를 확인한다.
 Get-NetAdapter 
 Name                      InterfaceDescription                    ifIndex Status       MacAddress             LinkSpeed
 ----                      --------------------                    ------- ------       ----------             ---------
 Ethernet0                 Intel(R) 82574L Gigabit Network Conn...       5 Up           00-0C-29-4C-35-63         1 Gbps
 
-2. 해당 Interface에 IP를 할당한다. 
+# 해당 Interface에 IP를 할당한다. 
 New-NetIPAddress -InterfaceAlias Ethernet0 -IPAddress 192.168.0.1 -PrefixLength 24
 또는
 New-NetIPAddress -InterfaceIndex 5 -IPAddress 192.168.0.1 -PrefixLength 24
 
-3. DNS Server는 PDC의 IP로 설정한다. 
+# DNS Server는 PDC의 IP로 설정한다. 
 Set-DnsClientServerAddress -InterfaceAlias ethernet0 -ServerAddresses 192.168.0.1
 ```
 
@@ -85,18 +85,18 @@ Set-DnsClientServerAddress -InterfaceAlias ethernet0 -ServerAddresses 192.168.0.
 `CLI 방식`
 
 ```powershell
-1. IP를 넣어줄 Interface의 Alias 또는 Interface Index를 확인한다.
+# IP를 넣어줄 Interface의 Alias 또는 Interface Index를 확인한다.
 Get-NetAdapter 
 Name                      InterfaceDescription                    ifIndex Status       MacAddress             LinkSpeed
 ----                      --------------------                    ------- ------       ----------             ---------
 Ethernet0                 Intel(R) 82574L Gigabit Network Conn...       5 Up           00-0C-29-4C-35-63         1 Gbps
 
-2. 해당 Interface에 IP를 할당한다. 
+# 해당 Interface에 IP를 할당한다. 
 New-NetIPAddress -InterfaceAlias Ethernet0 -IPAddress 192.168.0.2 -PrefixLength 24
 또는
 New-NetIPAddress -InterfaceIndex 5 -IPAddress 192.168.0.2 -PrefixLength 24
 
-3. DNS Server는 PDC의 IP로 설정한다. 
+# DNS Server는 PDC의 IP로 설정한다. 
 Set-DnsClientServerAddress -InterfaceAlias ethernet0 -ServerAddresses 192.168.0.1
 ```
 
@@ -114,18 +114,18 @@ Set-DnsClientServerAddress -InterfaceAlias ethernet0 -ServerAddresses 192.168.0.
 `CLI 방식`
 
 ```powershell
-1. IP를 넣어줄 Interface의 Alias 또는 Interface Index를 확인한다.
+# IP를 넣어줄 Interface의 Alias 또는 Interface Index를 확인한다.
 Get-NetAdapter 
 Name                      InterfaceDescription                    ifIndex Status       MacAddress             LinkSpeed
 ----                      --------------------                    ------- ------       ----------             ---------
 Ethernet0                 Intel(R) 82574L Gigabit Network Conn...       5 Up           00-0C-29-4C-35-63         1 Gbps
 
-2. 해당 Interface에 IP를 할당한다. 
+# 해당 Interface에 IP를 할당한다. 
 New-NetIPAddress -InterfaceAlias Ethernet0 -IPAddress 192.168.0.3 -PrefixLength 24
 또는
 New-NetIPAddress -InterfaceIndex 5 -IPAddress 192.168.0.3 -PrefixLength 24
 
-3. DNS Server는 PDC의 IP로 설정한다. 
+# DNS Server는 PDC의 IP로 설정한다. 
 Set-DnsClientServerAddress -InterfaceAlias ethernet0 -ServerAddresses 192.168.0.1
 ```
 
